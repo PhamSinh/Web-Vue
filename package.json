@@ -1,9 +1,10 @@
 {
-  "name": "vue-web",
+  "name": "vite-vuetify",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
@@ -12,9 +13,17 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@mdi/font": "^7.4.47",
+    "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "browserslist": "^4.23.0",
+    "postcss": "^8.4.38",
+    "sass": "^1.75.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
-    "vue-tsc": "^2.0.6"
+    "vue-i18n": "^9.13.1",
+    "vue-tsc": "^2.0.6",
+    "vuetify": "^3.5.17"
   }
 }
