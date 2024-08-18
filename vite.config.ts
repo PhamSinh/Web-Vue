@@ -17,13 +17,15 @@ export default defineConfig({
     }
   },
   resolve: {
-    alias: componentsAliases.map(alias => ({
-      find: `@${alias}`,
-      replacement: fileURLToPath(new URL(`./src/components/${alias}`, import.meta.url))
-    })).concat(
-      aliases.map(alias => ({
+    alias: [
+      { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) }, // Thêm alias gốc
+      ...componentsAliases.map(alias => ({
+        find: `@${alias}`,
+        replacement: fileURLToPath(new URL(`./src/components/${alias}`, import.meta.url))
+      })),
+      ...aliases.map(alias => ({
         find: `@${alias}`, replacement: fileURLToPath(new URL(`./src/${alias}`, import.meta.url))
       }))
-    )
+    ]
   },
 })
