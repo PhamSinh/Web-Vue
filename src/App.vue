@@ -151,7 +151,7 @@ const pageCount = computed(() => {
     </v-main>
 
     <v-footer app>
-      &copy;Copy right by NhatNC
+      &copy;Copy right by SinhPV
     </v-footer>
   </v-layout>
 </template>
