@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container id="contain">
     <v-row class="fill-height" align="center" justify="center">
       <v-col cols="12" md="10" lg="12">
         <v-card>
@@ -122,9 +122,14 @@ function forgotPassword() {
   color: #000000;
   opacity: 1;
 }
-// :deep(.v-btn--elevated) {
+#contain {
+//   height: 100vh;
+//   transform: translateY(15%);
+}
 
-// }
+:deep(.v-card-subtitle) {
+  opacity: 1 !important;
+}
 
 .v-text-field,
 .v-checkbox {
