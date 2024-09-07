@@ -4,12 +4,17 @@ const routes = [
   {
     path: '/',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../components/LoginForm.vue'),
+    component: () => import(/* webpackChunkName: "login" */ '@components/LoginForm.vue'),
   },
   {
     path: '/new-screen',
     name: 'NewScreen',
-    component: () => import(/* webpackChunkName: "new-screen" */ '../components/NewScreen.vue'),
+    component: () => import(/* webpackChunkName: "new-screen" */ '@components/NewScreen.vue'),
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: import(/* webpackChunkName: "new-screen" */ '@components/Dashboard.vue'), // Ensure this component exists
   },
 ];
 

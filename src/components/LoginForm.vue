@@ -4,9 +4,9 @@
       <v-col cols="12" md="10" lg="12">
         <v-card>
           <v-card-title>
-            <span class="headline">{{ $t('login.title') }}</span>
+            <span class="headline">{{ $t("login.title") }}</span>
           </v-card-title>
-          <v-card-subtitle>
+          <v-card-subtitle class="custom-subtitle">
             <v-form @submit.prevent="submitForm">
               <v-text-field
                 v-model="email"
@@ -32,18 +32,15 @@
                 :label="$t('login.rememberMe')"
               ></v-checkbox>
 
-              <v-btn
-                block
-                color="primary"
-                size="large"
-                type="submit"
-              >
-                {{ $t('login.submit') }}
+              <v-btn block color="primary" size="large" type="submit">
+                {{ $t("login.submit") }}
               </v-btn>
               <v-alert v-if="errorMessage" type="error" dismissible>
                 {{ errorMessage }}
               </v-alert>
-              <v-btn class="mb-5" block size="large" @click="forgotPassword">{{ $t('login.forgotPassword') }}</v-btn>
+              <v-btn class="mb-5" block size="large" @click="forgotPassword">{{
+                $t("login.forgotPassword")
+              }}</v-btn>
             </v-form>
           </v-card-subtitle>
         </v-card>
@@ -53,21 +50,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 // Form state
-const email = ref('');
-const password = ref('');
+const email = ref("");
+const password = ref("");
 const rememberMe = ref(false);
-const errorMessage = ref('');
+const errorMessage = ref("");
 
 // Validation rules
 const rules = {
-  required: (value: string) => !!value || 'This field is required',
-  email: (value: string) => /.+@.+\..+/.test(value) || 'Email must be valid',
-  minLength: (value: string) => value.length >= 6 || 'Password must be at least 6 characters long',
+  required: (value: string) => !!value || "This field is required",
+  email: (value: string) => /.+@.+\..+/.test(value) || "Email must be valid",
+  minLength: (value: string) =>
+    value.length >= 6 || "Password must be at least 6 characters long",
 };
 
 // i18n
@@ -80,21 +78,31 @@ const router = useRouter();
 const store = useStore();
 
 // Submit Form
-function submitForm() {
+async function submitForm() {
   if (email.value && password.value) {
-    // Call API
-    store.dispatch('login', { email: email.value, password: password.value })
-      .then(() => {
-        if (rememberMe.value) {
-          localStorage.setItem('loginData', JSON.stringify({ email: email.value, password: password.value }));
-        } else {
-          localStorage.removeItem('loginData');
-        }
-        router.push('/dashboard');
-      })
-      .catch((error: any) => {
-        errorMessage.value = error.message;
+    try {
+      // Call API
+      const call = await store.dispatch("login", {
+        email: email.value,
+        password: password.value,
       });
+
+      // Handle remember me
+      if (rememberMe.value) {
+        localStorage.setItem(
+          "loginData",
+          JSON.stringify({ email: email.value, password: password.value })
+        );
+      } else {
+        localStorage.removeItem("loginData");
+      }
+      if (call) {
+        // Redirect to dashboard
+        router.push("/dashboard");
+      }
+    } catch (error: any) {
+      errorMessage.value = error.message || "An error occurred";
+    }
   }
 }
 
@@ -110,6 +118,10 @@ function forgotPassword() {
   margin: auto;
 }
 
+.custom-subtitle {
+  color: #000000;
+  opacity: 1;
+}
 // :deep(.v-btn--elevated) {
 
 // }

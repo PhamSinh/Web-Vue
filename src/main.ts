@@ -15,12 +15,6 @@ const vuetify = createVuetify({
   directives,
 })
 
-// const i18n = createI18n({
-//   legacy: false,
-//   locale: 'en',
-//   messages,
-// })
-
 createApp(App)
   .use(vuetify)
   .use(i18n)
