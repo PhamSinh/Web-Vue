@@ -230,8 +230,18 @@ watch(page, (newPage) => {
 }
 
 .custom-subtitle {
-  color: #000000;
+  color: var(--text-color);
   opacity: 1;
   max-height: 60vh;
+}
+.v-card {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Example for table headers */
+.fixed-header-table thead th {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 </style>

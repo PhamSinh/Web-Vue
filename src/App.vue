@@ -57,4 +57,18 @@ const path = computed(() => route.path);
 :deep(.v-navigation-drawer) {
   position: fixed !important;
 }
+:deep(.v-card) {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Example for table headers */
+:deep(.fixed-header-table thead th) {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+:deep(.v-main) {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 </style>
