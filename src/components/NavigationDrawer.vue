@@ -19,14 +19,14 @@
       <!-- Navigation Items -->
       <v-list>
         <v-list-item
-          v-for="item in items"
+          v-for="item in (isAdmin ? adminItems : items)"
           :key="item.title"
           :to="item.route"
           class="menu-item"
           :class="{ active: $route.path === item.route }"
         >
           <v-list-item-icon>
-            <v-icon :class="{ 'icon-active': $route.path === item.route }">{{
+            <v-icon :class="{ 'icon-active': ($route.path === item.route) || item.route == $route.path.slice(7) }">{{
               item.icon
             }}</v-icon>
           </v-list-item-icon>
@@ -47,10 +47,12 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRoute } from "vue-router";
-import Header from '@components/Header.vue'; // Import Header component
+import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
+import Header from '@components/Header.vue';
+import { useStore } from 'vuex';
 
+const store = useStore();
 const drawer = ref(true);
 const route = useRoute();
 
@@ -60,11 +62,18 @@ const items = [
   { title: "Settings", route: "/settings", icon: "mdi-cog" },
 ];
 
+const isAdmin = computed(() => store.state.isAdmin)
+
+const adminItems = [
+  { title: "Sum", route: "/admin/dashboard", icon: "mdi-view-dashboard" },
+  { title: "Feature", route: "/admin/feature", icon: "mdi-star" },
+  { title: "Config", route: "/admin/config", icon: "mdi-cogs" },
+];
+
 const toggleDrawer = () => {
   drawer.value = !drawer.value;
 };
 </script>
-
 <style lang="scss" scoped>
 .navigation-drawer {
   background-color: #2e3b4e;
@@ -168,3 +177,4 @@ const toggleDrawer = () => {
   }
 }
 </style>
+

@@ -98,7 +98,8 @@ async function submitForm() {
       }
       if (call) {
         // Redirect to dashboard
-        router.push("/dashboard");
+        router.push("/admin/dashboard");
+        // router.push("/dashboard");
       }
     } catch (error: any) {
       errorMessage.value = error.message || "An error occurred";

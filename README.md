@@ -13,9 +13,14 @@ This template should help get you started developing with Vue 3 and TypeScript i
 -src
  -assets
   - vue.svg
-  -vuetify.scss
+  - vuetify.scss
  - components
   - HelloWord.vue
+  - BackgroundAnimation.vue
+  - Dashboard.vue
+  - Header.vue
+  - NavigationDrawer.vue
+  - NewScreen.vue
   - LoginForm.vue
  - plugins
   - i18n
@@ -28,7 +33,17 @@ This template should help get you started developing with Vue 3 and TypeScript i
   - vuetify
    - Vuetify.ts
    - VuetifyTheme.ts
+ - router
+  - index.ts
+ - store
+  - mock
+   - mockData.js
+  - modules
+   - login.ts
+   - user.ts
+  - index.ts
  - App.vue
+ - http.vue
  - main.ts
  - style.css
  - style.scss

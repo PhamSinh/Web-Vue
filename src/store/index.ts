@@ -20,24 +20,50 @@ const updateEmployee = async (id: number, data: any) => {
     });
 };
 
+const deleteEmployee = async (id: number) => {
+  // Mock API call
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({});
+    }, 500);
+  });
+};
+
+
 const store = createStore({
     state: {
         employees: [] as any[],
+        items: [] as any[],
         selectedEmployee: null as any,
+        isAdmin: false,
     },
     mutations: {
         setEmployees(state, employees) {
             state.employees = employees;
         },
+        setItems(state, items) {
+          state.items = items;
+      },
         setSelectedEmployee(state, employee) {
             state.selectedEmployee = employee;
         },
+        setAdmin(state, value) {
+          state.isAdmin = value;
+        }
     },
     actions: {
         async login({ commit }, payload) {
             try {
                 // const response = await axios.post('/api/login', payload);
-                return true;
+                // if (payload.isAdmin) {
+                if (true) {
+                  commit('setAdmin', true)
+                  return true;
+                } else {
+                  commit('setAdmin', false)
+                  return false;
+                }
+                // return true;
                 // Handle successful login, e.g., commit a mutation or store user info
                 // return response;
             } catch (error) {
@@ -60,6 +86,22 @@ const store = createStore({
                 commit('setEmployees', mockEmployees);
             }
         },
+        async fetchItems({ commit }, { page, limit }) {
+          try {
+              const response = await fetch(`https://your-api-endpoint/items?page=${page}&limit=${limit}`, {
+                  method: 'GET', // Or 'POST' if your API requires POST
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              });
+              const data = await response.json();
+              commit('setItems', data);
+          } catch (error) {
+              console.error('Error fetching items:', error);
+              // Use mock data if API call fails
+              commit('setItems', mockEmployees);
+          }
+      },
         async updateEmployee({ dispatch }, { id, data }) {
             try {
                 await fetch(`https://your-api-endpoint/employees/${id}`, {
@@ -74,13 +116,28 @@ const store = createStore({
                 console.error('Error updating employee:', error);
             }
         },
+        async deleteEmployee({ dispatch }, id: number) {
+          try {
+            await fetch(`https://your-api-endpoint/employees/${id}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            dispatch('fetchEmployees', { page: 1, limit: 10 });
+          } catch (error) {
+            console.error('Error deleting employee:', error);
+          }
+        },
         selectEmployee({ commit }, employee) {
             commit('setSelectedEmployee', employee);
         },
     },
     getters: {
         employees: (state) => state.employees,
+        items: (state) => state.items,
         selectedEmployee: (state) => state.selectedEmployee,
+        isAdmin: (state) => state.isAdmin,
     },
 });
 
