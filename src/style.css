@@ -64,6 +64,11 @@ button:focus-visible {
   text-align: center;
 }
 
+.custom-subtitle {
+  color: #000000;
+  opacity: 1;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

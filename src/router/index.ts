@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: import(/* webpackChunkName: "new-screen" */ '@components/Dashboard.vue'), // Ensure this component exists
+    component:  () => import(/* webpackChunkName: "new-screen" */ '@components/Dashboard.vue'), // Ensure this component exists
   },
 ];
 

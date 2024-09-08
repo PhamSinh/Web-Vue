@@ -1,85 +1,47 @@
 <template>
-  <video autoplay muted loop id="background-video">
-    <source src="@assets/bg-login.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <v-container :class="path !== '/' ? '' : 'login'">
-    <v-row class="fill-height" align="center" justify="center">
-      <v-col cols="12" md="8">
-        <v-card>
-          <v-card-title v-if="path !== '/'">
-            <span class="headline">{{ $t("login.title") }}</span>
-          </v-card-title>
-          <v-card-subtitle>
-            <!-- Use transition for route changes -->
-            <transition name="fade" @before-enter="beforeEnter" @enter="enter" @leave="leave">
+  <div>
+    <BackgroundAnimation v-if="path === '/'"/>
+
+    <v-container :class="{'login': path === '/'}">
+      <v-row class="fill-height" align="center" justify="center">
+        <v-col cols="12" :md=" path === '/' ? 8 : ''">
+          <v-card>
+            <!-- Render the card title only when not on the login page -->
+            <v-card-title v-if="path !== '/'">
+              <span class="headline">{{ $t("login.title") }}</span>
+            </v-card-title>
+            <v-card-subtitle>
+              <!-- Render router-view to switch between pages -->
               <router-view />
-            </transition>
-          </v-card-subtitle>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+            </v-card-subtitle>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTheme } from 'vuetify';
+import { useRoute } from 'vue-router';
+import BackgroundAnimation from './components/BackgroundAnimation.vue';
 
-// Theme toggle function
-const theme = useTheme();
-const path = computed(() => window.location.pathname);
-
-function toggleTheme() {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
-}
-
-// Transition Hooks
-function beforeEnter(el: HTMLElement) {
-  el.style.opacity = '0';
-}
-
-function enter(el: HTMLElement, done: () => void) {
-  el.offsetHeight; // trigger reflow
-  el.style.transition = 'opacity 0.5s';
-  el.style.opacity = '1';
-  done();
-}
-
-function leave(el: HTMLElement, done: () => void) {
-  el.style.transition = 'opacity 0.5s';
-  el.style.opacity = '0';
-  done();
-}
+const route = useRoute();
+const path = computed(() => route.path);
 </script>
 
 <style lang="scss" scoped>
-:deep(.v-card-subtitle) {
-  opacity: 1 !important;
-}
-
 .login {
   transform: translateY(15%);
 }
 
-#background-video {
-  position: fixed; /* Đảm bảo video luôn nằm ở nền */
-  top: 0;
-  left: 0;
+/* Style for BackgroundAnimation to ensure it displays properly */
+.background-animation {
+  position: absolute; /* Ensure background is correctly positioned */
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Đảm bảo video không bị bóp méo và phủ toàn bộ màn hình */
-  z-index: -1; /* Đặt video phía dưới các phần tử khác */
-}
-
-/* Transition for fade effect */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter,
-.fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place background behind other content */
 }
 </style>
