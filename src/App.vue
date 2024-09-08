@@ -44,6 +44,7 @@ const path = computed(() => route.path);
 
 .login {
   margin-top: 64px;
+  margin-left: -74px;
 }
 
 .background-animation {

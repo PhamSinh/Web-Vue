@@ -1,16 +1,26 @@
 {
     "hello": "Hello",
     "login": {
-      "title": "Login",
-      "email": "Email",
-      "password": "Password",
-      "rememberMe": "Remember me",
-      "submit": "Login",
-      "forgotPassword": "Forgot password?"
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "rememberMe": "Remember me",
+        "submit": "Login",
+        "forgotPassword": "Forgot password?"
     },
     "validation": {
-      "required": "This field is required",
-      "invalidEmail": "Please enter a valid email address",
-      "minLength": "Must be at least {min} characters long"
+        "required": "This field is required",
+        "invalidEmail": "Please enter a valid email address",
+        "minLength": "Must be at least {min} characters long"
+    },
+    "other": {
+        "welcome": "Welcome",
+        "logout": "Logout",
+        "employeeList": "Employee List",
+        "editEmployee": "Edit Employee",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "noData": "No data available",
+        "showingRecords": "Showing {count} of {total} records"
     }
-  }
+}

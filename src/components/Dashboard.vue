@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <span class="headline">Employee List</span>
+        <span class="headline">{{ $t('other.employeeList') }}</span>
       </v-card-title>
       <v-card-subtitle class="custom-subtitle">
         <!-- Loading spinner -->
@@ -202,7 +202,7 @@ watch(page, (newPage) => {
 }
 
 .table-row:hover {
-  background-color: #f0f0f0; /* Hover effect for rows */
+  background-color: var(--hover); /* Hover effect for rows */
 }
 
 .pagination-container {

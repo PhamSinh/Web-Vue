@@ -1,16 +1,26 @@
 {
-    "hello": "Xin chào",
-    "login": {
-      "title": "Đăng nhập",
-      "email": "Email",
-      "password": "Mật khẩu",
-      "rememberMe": "Ghi nhớ đăng nhập",
-      "submit": "Đăng nhập",
-      "forgotPassword": "Quên mật khẩu?"
-    },
-    "validation": {
-      "required": "Trường này là bắt buộc",
-      "invalidEmail": "Vui lòng nhập một địa chỉ email hợp lệ",
-      "minLength": "Phải có ít nhất {min} ký tự"
-    }
+  "hello": "Xin chào",
+  "login": {
+    "title": "Đăng nhập",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "rememberMe": "Ghi nhớ đăng nhập",
+    "submit": "Đăng nhập",
+    "forgotPassword": "Quên mật khẩu?"
+  },
+  "validation": {
+    "required": "Trường này là bắt buộc",
+    "invalidEmail": "Vui lòng nhập một địa chỉ email hợp lệ",
+    "minLength": "Phải có ít nhất {min} ký tự"
+  },
+  "other": {
+    "welcome": "Chào mừng",
+    "logout": "Đăng xuất",
+    "employeeList": "Danh sách nhân viên",
+    "editEmployee": "Chỉnh sửa nhân viên",
+    "confirm": "Xác nhận",
+    "cancel": "Hủy",
+    "noData": "Không có dữ liệu",
+    "showingRecords": "Hiển thị {count} trong tổng số {total} bản ghi"
   }
+}

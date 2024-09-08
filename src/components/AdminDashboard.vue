@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <span class="headline">Admin Dashboard</span>
+        <span class="headline">{{ $t('other.employeeList') }}</span>
       </v-card-title>
       <v-card-subtitle class="custom-subtitle">
         <!-- Loading spinner -->
@@ -16,7 +16,7 @@
 
         <!-- No data message -->
         <div v-else-if="!items.length" class="no-data">
-          No data available
+          {{ $t('other.noData') }}
         </div>
 
         <!-- Fixed header table -->
@@ -78,6 +78,9 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const store = useStore();
 const page = ref(1); // Initialize with the default page number
@@ -188,7 +191,7 @@ watch(page, (newPage) => {
 }
 
 .table-row:hover {
-  background-color: #f0f0f0; /* Hover effect for rows */
+  background-color: var(--hover); /* Hover effect for rows */
 }
 
 .pagination-container {
