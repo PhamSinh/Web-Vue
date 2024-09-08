@@ -9,7 +9,7 @@ import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n'
 import { useI18n } from 'vue-i18n'
 import i18n from '../i18n/I18n'
 import VuetifyTheme from './VuetifyTheme'
-
+import 'vuetify/styles';
 export default createVuetify({
     components,
     directives,
