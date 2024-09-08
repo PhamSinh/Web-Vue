@@ -1,5 +1,9 @@
 <template>
   <v-app>
+    <!-- Thanh Header -->
+    <Header />
+
+    <!-- Thanh Navigation Drawer -->
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -32,6 +36,8 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    <!-- Nội dung chính -->
     <v-main>
       <v-container>
         <router-view />
@@ -43,6 +49,7 @@
 <script setup>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import Header from '@components/Header.vue'; // Import Header component
 
 const drawer = ref(true);
 const route = useRoute();
@@ -63,12 +70,17 @@ const toggleDrawer = () => {
   background-color: #2e3b4e;
   color: #ffffff;
   transition: width 0.3s ease;
-  position: relative;
-  padding-top: 64px;
+  position: fixed;
+  top: 64px; /* Chiều cao của header */
+  left: 0;
+  bottom: 0;
+  padding-top: 64px; /* Đảm bảo nội dung không bị che khuất */
 }
+
 .navigation-drawer.collapsed {
   width: 72px;
 }
+
 .menu-item {
   border-radius: 8px;
   margin: 4px 0;
@@ -76,13 +88,16 @@ const toggleDrawer = () => {
   align-items: center;
   padding: 8px 16px;
 }
+
 .menu-item:hover {
   background-color: #1f2a38;
   cursor: pointer;
 }
+
 .menu-item.active {
   background-color: #004d40;
 }
+
 .v-list-item-icon {
   display: flex;
   align-items: center;
@@ -90,19 +105,23 @@ const toggleDrawer = () => {
   min-width: 24px;
   margin-right: 16px;
 }
+
 .v-list-item-content {
   color: #ffffff;
   transition: opacity 0.3s ease;
   display: flex;
   align-items: center;
 }
+
 .v-list-item-title {
   font-weight: 500;
   white-space: nowrap;
 }
+
 .icon-active {
   animation: fadeInOut 1.5s infinite;
 }
+
 @keyframes fadeInOut {
   0% {
     opacity: 0.5;
@@ -114,11 +133,11 @@ const toggleDrawer = () => {
     opacity: 0.5;
   }
 }
+
 .collapse-btn {
   position: absolute;
   top: 16px;
   right: 16px;
-  left: auto;
   transition: all 0.3s ease;
   background-color: #004d40;
   color: #ffffff;
@@ -131,13 +150,16 @@ const toggleDrawer = () => {
   width: 40px;
   height: 40px;
 }
+
 .navigation-drawer:not(.collapsed) .collapse-btn {
   right: 50%;
   transform: translateX(50%);
 }
+
 .navigation-drawer.collapsed .v-list-item-content {
   display: none;
 }
+
 :deep(.v-list-item__content) {
   display: flex;
   gap: 1rem;
