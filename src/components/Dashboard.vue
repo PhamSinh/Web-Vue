@@ -93,6 +93,7 @@
   </v-container>
 </template>
 
+
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { useStore } from 'vuex';
@@ -160,24 +161,37 @@ watch(page, (newPage) => {
   fetchEmployees(newPage);
 });
 </script>
-
-
 <style lang="scss" scoped>
-/* Add custom styles */
+/* Container for the table to ensure proper scrolling */
+.custom-subtitle {
+  position: relative;
+  max-height: 400px; /* Set a specific height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
 .fixed-header-table {
   width: 100%;
   border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fixed-header-table thead th {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0px;
+  background-color: #f5f5f5; /* Match the header background color */
+  z-index: 1; /* Ensure the header stays above the table body */
+  outline: 1px solid #ddb;
 }
 
 .fixed-header-table th,
 .fixed-header-table td {
   padding: 10px;
   border: 1px solid #ddd;
-  text-align: left; /* Default alignment for other columns */
+  text-align: left;
 }
 
 .fixed-header-table th {
-  background-color: #f5f5f5;
   font-weight: bold;
 }
 
@@ -215,11 +229,9 @@ watch(page, (newPage) => {
   color: #888;
 }
 
-:deep(.v-card-subtitle) {
-  opacity: 1 !important;
+.custom-subtitle {
+  color: #000000;
+  opacity: 1;
+  max-height: 60vh;
 }
 </style>
-
-
-
-
