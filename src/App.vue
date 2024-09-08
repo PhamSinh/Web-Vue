@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <Header v-if="path !== '/'"/>
-    <BackgroundAnimation v-if="path == '/'"/>
     
     <NavigationDrawer v-if="path !== '/'"/>
     
     <v-main>
+    <BackgroundAnimation v-if="path == '/'"/>
       <v-container :class="{'login': path === '/'}" fluid>
         <v-row class="fill-height" align="center" justify="center">
           <v-col cols="12" :md=" path === '/' ? 8 : ''">
