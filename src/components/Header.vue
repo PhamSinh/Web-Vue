@@ -2,16 +2,6 @@
   <v-app-bar app>
     <!-- Language Select Box -->
     <v-toolbar-title>My Application</v-toolbar-title>
-    <v-select
-      v-model="selectedLanguage"
-      :items="languages"
-      item-title="name"
-      item-value="code"
-      label="Language"
-      @update:model-value="changeLanguage"
-      class="ml-4 relative"
-      return-object
-    ></v-select>
 
     <v-spacer />
 

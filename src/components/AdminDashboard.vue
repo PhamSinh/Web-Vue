@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <span class="headline">{{ $t('other.employeeList') }}</span>
+        <span class="headline">Employee list</span>
       </v-card-title>
       <v-card-subtitle class="custom-subtitle">
         <!-- Loading spinner -->
@@ -78,9 +78,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 
 const store = useStore();
 const page = ref(1); // Initialize with the default page number
@@ -171,6 +168,7 @@ watch(page, (newPage) => {
   background-color: #f5f5f5; /* Match the header background color */
   z-index: 1; /* Ensure the header stays above the table body */
   outline: 1px solid #ddb;
+  
 }
 
 .fixed-header-table th,
@@ -227,6 +225,7 @@ watch(page, (newPage) => {
 .v-card {
   background-color: var(--background-color);
   color: var(--text-color);
+  margin-left: 140px;
 }
 
 /* Example for table headers */

@@ -11,15 +11,15 @@ onMounted(() => {
   const canvas = document.getElementById('dotsCanvas') as HTMLCanvasElement;
   if (!canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx: any = canvas.getContext('2d');
   if (!ctx) return;
 
-  let dots = [];
+  let dots: any = [];
   const arrayColors = ['#eee', '#545454', '#596d91', '#bb5a68', '#696541'];
   
   function drawDots() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    dots.forEach(dot => {
+    dots.forEach((dot: any) => {
       ctx.fillStyle = dot.color;
       ctx.beginPath();
       ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
@@ -47,7 +47,7 @@ onMounted(() => {
       x: event.pageX - canvas.getBoundingClientRect().left,
       y: event.pageY - canvas.getBoundingClientRect().top
     };
-    dots.forEach(dot => {
+    dots.forEach((dot: any) => {
       const distance = Math.sqrt((mouse.x - dot.x) ** 2 + (mouse.y - dot.y) ** 2);
       if (distance < 300) {
         ctx.strokeStyle = dot.color;

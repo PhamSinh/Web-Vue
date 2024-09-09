@@ -4,7 +4,7 @@
       <v-col cols="12" md="10" lg="12">
         <v-card>
           <v-card-title>
-            <span class="headline">{{ $t("login.title") }}</span>
+            <span class="headline">Login</span>
           </v-card-title>
           <v-card-subtitle class="custom-subtitle">
             <v-form @submit.prevent="submitForm">
@@ -51,7 +51,6 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 // Form state
@@ -69,7 +68,6 @@ const rules = {
 };
 
 // i18n
-const { t } = useI18n();
 
 // Vue Router
 const router = useRouter();

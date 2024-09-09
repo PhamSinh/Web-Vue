@@ -157,7 +157,7 @@ onMounted(() => {
 });
 
 // Watch for changes in the page number and fetch new data
-watch(page, (newPage) => {
+watch(page, (newPage: number) => {
   fetchEmployees(newPage);
 });
 </script>

@@ -51,6 +51,7 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import Header from '@components/Header.vue';
 import { useStore } from 'vuex';
+import { useRouter } from "vue-router";
 
 const store = useStore();
 const drawer = ref(true);
@@ -69,9 +70,11 @@ const adminItems = [
   { title: "Feature", route: "/admin/feature", icon: "mdi-star" },
   { title: "Config", route: "/admin/config", icon: "mdi-cogs" },
 ];
+const router = useRouter();
 
 const toggleDrawer = () => {
-  drawer.value = !drawer.value;
+  // drawer.value = !drawer.value;
+  router.push("/admin/dashboard")
 };
 </script>
 <style lang="scss" scoped>

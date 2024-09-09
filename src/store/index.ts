@@ -1,33 +1,6 @@
 import { createStore } from 'vuex';
-import axios from 'axios';
-import { mockEmployees } from './mock/mockData';
-
-const getEmployees = async () => {
-    // Mock API call
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({ data: mockEmployees });
-        }, 500);
-    });
-};
-
-const updateEmployee = async (id: number, data: any) => {
-    // Mock API call
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({});
-        }, 500);
-    });
-};
-
-const deleteEmployee = async (id: number) => {
-  // Mock API call
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({});
-    }, 500);
-  });
-};
+// import axios from 'axios';
+import { mockEmployees } from './mock/mockData.js';
 
 
 const store = createStore({
@@ -38,21 +11,22 @@ const store = createStore({
         isAdmin: false,
     },
     mutations: {
-        setEmployees(state, employees) {
+        setEmployees(state: any, employees: any) {
             state.employees = employees;
         },
-        setItems(state, items) {
+        setItems(state: any, items: any) {
           state.items = items;
       },
-        setSelectedEmployee(state, employee) {
+        setSelectedEmployee(state: any, employee: any) {
             state.selectedEmployee = employee;
         },
-        setAdmin(state, value) {
+        setAdmin(state: any, value: any) {
           state.isAdmin = value;
         }
     },
     actions: {
-        async login({ commit }, payload) {
+        // async login({ commit } : any : any, payload: any) {
+            async login({ commit } : any) {
             try {
                 // const response = await axios.post('/api/login', payload);
                 // if (payload.isAdmin) {
@@ -70,7 +44,7 @@ const store = createStore({
                 throw error; // Ensure error is thrown to be caught in component
             }
         },
-        async fetchEmployees({ commit }, { page, limit }) {
+        async fetchEmployees({ commit } : any, { page, limit }: any) {
             try {
                 const response = await fetch(`https://your-api-endpoint/employees?page=${page}&limit=${limit}`, {
                     method: 'GET', // Or 'POST' if your API requires POST
@@ -86,7 +60,7 @@ const store = createStore({
                 commit('setEmployees', mockEmployees);
             }
         },
-        async fetchItems({ commit }, { page, limit }) {
+        async fetchItems({ commit } : any, { page, limit } : any) {
           try {
               const response = await fetch(`https://your-api-endpoint/items?page=${page}&limit=${limit}`, {
                   method: 'GET', // Or 'POST' if your API requires POST
@@ -102,7 +76,7 @@ const store = createStore({
               commit('setItems', mockEmployees);
           }
       },
-        async updateEmployee({ dispatch }, { id, data }) {
+        async updateEmployee({ dispatch }: any, { id, data }: any) {
             try {
                 await fetch(`https://your-api-endpoint/employees/${id}`, {
                     method: 'PUT',
@@ -116,7 +90,7 @@ const store = createStore({
                 console.error('Error updating employee:', error);
             }
         },
-        async deleteEmployee({ dispatch }, id: number) {
+        async deleteEmployee({ dispatch }: any, id: number) {
           try {
             await fetch(`https://your-api-endpoint/employees/${id}`, {
               method: 'DELETE',
@@ -129,15 +103,15 @@ const store = createStore({
             console.error('Error deleting employee:', error);
           }
         },
-        selectEmployee({ commit }, employee) {
+        selectEmployee({ commit } : any, employee: any) {
             commit('setSelectedEmployee', employee);
         },
     },
     getters: {
-        employees: (state) => state.employees,
-        items: (state) => state.items,
-        selectedEmployee: (state) => state.selectedEmployee,
-        isAdmin: (state) => state.isAdmin,
+        employees: (state: any) => state.employees,
+        items: (state: any) => state.items,
+        selectedEmployee: (state: any) => state.selectedEmployee,
+        isAdmin: (state:any) => state.isAdmin,
     },
 });
 
