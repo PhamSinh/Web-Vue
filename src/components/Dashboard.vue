@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <span class="headline">{{ $t('other.employeeList') }}</span>
+        <span class="headline">List</span>
       </v-card-title>
       <v-card-subtitle class="custom-subtitle">
         <!-- Loading spinner -->
@@ -243,5 +243,8 @@ watch(page, (newPage) => {
 .fixed-header-table thead th {
   background-color: var(--background-color);
   color: var(--text-color);
+}
+:deep(th){
+  background-color: red;
 }
 </style>

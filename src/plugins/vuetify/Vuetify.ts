@@ -1,28 +1,40 @@
-import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
-import 'vuetify/styles'
-// import '@assets/vuetify.scss'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-import { md3 } from 'vuetify/blueprints'
-import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n'
-import { useI18n } from 'vue-i18n'
-import i18n from '../i18n/I18n'
-import VuetifyTheme from './VuetifyTheme'
-import 'vuetify/styles';
+import { createVuetify } from 'vuetify';
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
+import { icons } from './mdi-icon'; // Import icons from separate file
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
+import { PurpleTheme } from '@theme/LightTheme';
+
 export default createVuetify({
-    components,
-    directives,
-    blueprint: md3,
-    icons: {
-        defaultSet: 'mdi', // This is already the default value - only for display purposes
+  components,
+  directives,
+  icons: {
+    defaultSet: 'mdi',
+    aliases: {
+      ...aliases,
+      ...icons
     },
-    locale: {
-        adapter: createVueI18nAdapter({ i18n, useI18n }),
-    },
-    theme: {
-        themes: {
-            VuetifyTheme
-        }
+    sets: {
+      mdi
     }
-})
+  },
+  theme: {
+    defaultTheme: 'PurpleTheme',
+    themes: {
+      PurpleTheme
+    }
+  },
+  defaults: {
+    VBtn: {},
+    VCard: {
+      rounded: 'md'
+    },
+    VTextField: {
+      rounded: 'lg'
+    },
+    VTooltip: {
+      // set v-tooltip default location to top
+      location: 'top'
+    }
+  }
+});

@@ -2,7 +2,7 @@
   <v-container>
     <v-card>
       <v-card-title>
-        <span class="headline">{{ $t('other.employeeList') }}</span>
+        <span class="headline">Admin</span>
       </v-card-title>
       <v-card-subtitle class="custom-subtitle">
         <!-- Loading spinner -->
@@ -78,9 +78,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { useStore } from 'vuex';
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 
 const store = useStore();
 const page = ref(1); // Initialize with the default page number
@@ -145,7 +142,7 @@ onMounted(() => {
 });
 
 // Watch for changes in the page number and fetch new data
-watch(page, (newPage) => {
+watch(page, (newPage: any) => {
   fetchItems(newPage);
 });
 </script>

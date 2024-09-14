@@ -10,15 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
     "axios": "^1.7.7",
+    "pinia": "^2.2.2",
+    "vee-validate": "^4.13.2",
     "vite-plugin-vuetify": "^2.0.4",
     "vue": "^3.4.21",
     "vue-router": "^4.4.3",
-    "vuex": "^4.0.2"
+    "vue-tabler-icons": "^2.21.0",
+    "vue3-perfect-scrollbar": "^2.0.0",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.16.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "browserslist": "^4.23.0",

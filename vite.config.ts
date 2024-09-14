@@ -46,6 +46,40 @@ export default defineConfig({
       {
         find: '@plugins',
         replacement: fileURLToPath(new URL('./src/plugins', import.meta.url))
+      },
+      {
+        find: '@scss',
+        replacement: fileURLToPath(new URL('./src/scss', import.meta.url))
+      },
+      {
+        find: '@layouts',
+        replacement: fileURLToPath(new URL('./src/layouts', import.meta.url))
+      }
+      ,
+      {
+        find: '@store',
+        replacement: fileURLToPath(new URL('./src/store', import.meta.url))
+      },
+      {
+        find: '@utils',
+        replacement: fileURLToPath(new URL('./src/utils', import.meta.url))
+      },
+      {
+        find: '@views',
+        replacement: fileURLToPath(new URL('./src/views', import.meta.url))
+      },
+      {
+        find: '@router',
+        replacement: fileURLToPath(new URL('./src/router', import.meta.url))
+      }
+      ,
+      {
+        find: '@types',
+        replacement: fileURLToPath(new URL('./src/types', import.meta.url))
+      },
+      {
+        find: '@theme',
+        replacement: fileURLToPath(new URL('./src/theme', import.meta.url))
       }
     ]
   },
