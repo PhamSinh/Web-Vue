@@ -31,13 +31,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="employee in paginatedEmployees" :key="employee.id" class="table-row">
+            <tr
+              v-for="employee in paginatedEmployees"
+              :key="employee.id"
+              class="table-row"
+            >
               <td>{{ employee.id }}</td>
               <td>{{ employee.name }}</td>
               <td>{{ employee.position }}</td>
               <td>{{ employee.email }}</td>
               <td class="actions">
-                <v-btn @click="editEmployee(employee)" color="primary">Edit</v-btn>
+                <v-btn @click="editEmployee(employee)" color="primary"
+                  >Edit</v-btn
+                >
               </td>
             </tr>
           </tbody>
@@ -46,7 +52,9 @@
       <!-- Pagination and Record Count -->
       <v-card-actions>
         <div class="pagination-container">
-          <span>{{ `Showing ${paginatedEmployees.length} of ${totalItems} records` }}</span>
+          <span>{{
+            `Showing ${paginatedEmployees.length} of ${totalItems} records`
+          }}</span>
           <v-pagination
             v-model:page="page"
             :length="totalPages"
@@ -83,10 +91,10 @@
             ></v-text-field>
           </v-form>
         </v-card-subtitle>
-        <v-card-actions>
+        <v-card-actions class="btn-gr">
           <!-- Buttons to cancel or confirm changes -->
-          <v-btn @click="cancel">Cancel</v-btn>
-          <v-btn color="primary" @click="confirm">Confirm</v-btn>
+          <v-btn class="btn1" @click="cancel">Cancel</v-btn>
+          <v-btn class="btn2" color="primary" @click="confirm">Confirm</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -95,8 +103,8 @@
 
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
-import { useStore } from 'vuex';
+import { ref, computed, watch, onMounted } from "vue";
+import { useStore } from "vuex";
 
 const store = useStore();
 const showDialog = ref(false);
@@ -110,7 +118,9 @@ const employees = computed(() => store.getters.employees);
 const totalItems = computed(() => store.getters.totalItems); // Assuming you have totalItems in your store
 const totalPages = computed(() => Math.ceil(totalItems.value / limit));
 
-const paginatedEmployees = computed(() => employees.value.slice((page.value - 1) * limit, page.value * limit));
+const paginatedEmployees = computed(() =>
+  employees.value.slice((page.value - 1) * limit, page.value * limit)
+);
 
 // Function to handle editing employee details
 const editEmployee = (employee: any) => {
@@ -126,12 +136,15 @@ const cancel = () => {
 // Function to confirm changes
 const confirm = async () => {
   try {
-    await store.dispatch('updateEmployee', { id: selectedEmployee.value.id, data: selectedEmployee.value });
+    await store.dispatch("updateEmployee", {
+      id: selectedEmployee.value.id,
+      data: selectedEmployee.value,
+    });
     showDialog.value = false; // Hide the dialog after successful update
     // Optionally refetch the current page to get the latest data
     fetchEmployees(page.value);
   } catch (error) {
-    console.error('Error updating employee:', error);
+    console.error("Error updating employee:", error);
   }
 };
 
@@ -145,7 +158,7 @@ const handlePageChange = (newPage: number) => {
 const fetchEmployees = async (currentPage: number) => {
   loading.value = true; // Set loading state to true
   try {
-    await store.dispatch('fetchEmployees', { page: currentPage, limit });
+    await store.dispatch("fetchEmployees", { page: currentPage, limit });
   } finally {
     loading.value = false; // Set loading state to false after fetching data
   }
@@ -241,10 +254,46 @@ watch(page, (newPage) => {
 
 /* Example for table headers */
 .fixed-header-table thead th {
-  background-color: var(--background-color);
+  background-color: #e9f4f4;
   color: var(--text-color);
 }
-:deep(th){
+:deep(th) {
   background-color: red;
+}
+:deep(.v-overlay__content) {
+  background-color: #ffffff;
+}
+.btn-gr {
+  border-top: 1px solid #e9f4f4;
+  justify-content: center;
+  gap: 20px;
+  /* Đặt kiểu dáng cơ bản cho tất cả các nút */
+  .btn1 {
+    background-color: #f44336; /* Màu nền đỏ */
+    color: #fff; /* Màu chữ trắng */
+    border: 2px solid #f44336; /* Đường viền màu đỏ */
+}
+
+.btn1:hover {
+    background-color: #e57373; /* Màu nền đỏ nhạt hơn khi hover */
+    border-color: #e57373; /* Đường viền màu đỏ nhạt hơn khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
+    transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+}
+
+/* Nút Confirm */
+.btn2 {
+    background-color: #2196f3; /* Màu nền xanh dương */
+    color: #fff !important; /* Màu chữ trắng */
+    border: 2px solid #2196f3; /* Đường viền màu xanh dương */
+}
+
+.btn2:hover {
+    background-color: #1976d2; /* Màu nền xanh dương nhạt hơn khi hover */
+    border-color: #1976d2; /* Đường viền màu xanh dương nhạt hơn khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
+    transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+}
+
 }
 </style>

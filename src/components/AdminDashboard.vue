@@ -16,7 +16,7 @@
 
         <!-- No data message -->
         <div v-else-if="!items.length" class="no-data">
-          {{ $t('other.noData') }}
+          Empty
         </div>
 
         <!-- Fixed header table -->

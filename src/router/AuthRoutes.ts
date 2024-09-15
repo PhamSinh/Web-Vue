@@ -12,7 +12,7 @@ const AuthRoutes = {
     },
     {
       name: 'Register',
-      path: '/auth/register',
+      path: '/register',
       component: () => import('@components/RegisterPage.vue')
     },
     {

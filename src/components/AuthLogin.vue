@@ -29,18 +29,18 @@ async function validate(_values: any, { setErrors }: any) {
 </script>
 
 <template>
-  <v-btn block color="primary" variant="outlined" class="text-lightText googleBtn">
+  <v-btn block color="primary" variant="outlined" class="text-lightText googleBtn mt-2">
     <img :src="Google" alt="google" />
     <span class="ml-2">Sign in with Google</span></v-btn
   >
   <v-row>
     <v-col class="d-flex align-center">
       <v-divider class="custom-devider" />
-      <v-btn variant="outlined" class="orbtn" rounded="md" size="small">OR</v-btn>
+      <v-btn variant="outlined" class="orbtn mt-0 mb-0" rounded="md" size="small">OR</v-btn>
       <v-divider class="custom-devider" />
     </v-col>
   </v-row>
-  <h5 class="text-h5 text-center my-4 mb-8">Sign in with Email address</h5>
+  <h5 class="text-h5 text-center my-4 mb-4">Sign in with Email address</h5>
   <Form @submit="validate" class="mt-7 loginForm" v-slot="{ errors, isSubmitting }">
     <v-text-field
       v-model="username"

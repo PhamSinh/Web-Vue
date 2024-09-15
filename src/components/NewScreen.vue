@@ -1,13 +1,21 @@
 <template>
-  <div>
-    <h1>New Screen</h1>
-    <p>Welcome to the new screen!</p>
-  </div>
+  <v-container>
+    <v-card>
+      <v-card-title>
+        <span class="headline">New Screen</span>
+      </v-card-title>
+      
+      <!-- Content -->
+      
+    </v-card>
+    <!-- Dialog for editing employee details -->
+  </v-container>
 </template>
 
-<script setup lang="ts">
-</script>
 
-<style scoped>
-/* Style cho màn hình mới */
+<script setup lang="ts">
+
+</script>
+<style lang="scss" scoped>
+
 </style>

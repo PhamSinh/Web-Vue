@@ -21,11 +21,6 @@ const MainRoutes = {
       component: () => import('@views/utilities/icons/TablerIcons.vue')
     },
     {
-      name: 'Material Icons',
-      path: '/icons/material',
-      component: () => import('@views/utilities/icons/MaterialIcons.vue')
-    },
-    {
       name: 'Typography',
       path: '/utils/typography',
       component: () => import('@views/utilities/typography/TypographyPage.vue')
@@ -34,6 +29,21 @@ const MainRoutes = {
       name: 'Shadows',
       path: '/utils/shadows',
       component: () => import('@views/utilities/shadows/ShadowPage.vue')
+    },
+    {
+      name: 'Screen',
+      path: '/screen',
+      component: () => import('@components/NewScreen.vue')
+    },
+    {
+      name: 'Screen1',
+      path: '/screen1',
+      component: () => import('@components/NewScreen1.vue')
+    },
+    {
+      name: 'Screen2',
+      path: '/screen2',
+      component: () => import('@components/NewScreen2.vue')
     },
     {
       name: 'Colors',

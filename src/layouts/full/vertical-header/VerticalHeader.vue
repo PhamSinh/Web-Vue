@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useCustomizerStore } from '@store/customizer';
+import { useCustomizerStore } from "@store/customizer";
 // Icon Imports
-import { SettingsIcon, Menu2Icon } from 'vue-tabler-icons';
+import { SettingsIcon, Menu2Icon } from "vue-tabler-icons";
 
 // dropdown imports
-import ProfileDD from './ProfileDD.vue';
+import ProfileDD from "./ProfileDD.vue";
 
 const customizer = useCustomizerStore();
 </script>
 
 <template>
-  <v-app-bar elevation="0" height="80">
+  <v-app-bar elevation="0" height="80" class="wrapper-header">
     <v-btn
       class="hidden-md-and-down text-secondary"
       color="lightsecondary"
@@ -39,7 +39,13 @@ const customizer = useCustomizerStore();
     <!-- ---------------------------------------------- -->
     <v-menu :close-on-content-click="false">
       <template v-slot:activator="{ props }">
-        <v-btn class="profileBtn text-primary" color="lightprimary" variant="flat" rounded="pill" v-bind="props">
+        <v-btn
+          class="profileBtn text-primary"
+          color="lightprimary"
+          variant="flat"
+          rounded="pill"
+          v-bind="props"
+        >
           <v-avatar size="30" class="mr-2 py-2">
             <img src="@assets/profile/user-round.svg" alt="Julia" />
           </v-avatar>
@@ -53,8 +59,13 @@ const customizer = useCustomizerStore();
   </v-app-bar>
 </template>
 <style lang="scss" scoped>
- :deep(.v-toolbar__content) {
+:deep(.v-toolbar__content) {
   justify-content: space-between !important;
   padding-top: 20px;
- }
+}
+.wrapper-header {
+  padding-left: 25px;
+  padding-right: 25px;
+  outline: 1px solid #E9F4F4;
+}
 </style>

@@ -31,7 +31,7 @@ const sidebarItem: menu[] = [
   {
     title: 'Default',
     icon: DashboardIcon,
-    to: '/dashboard/default'
+    to: '/dashboard'
   },
   { divider: true },
   { header: 'Pages' },
@@ -56,6 +56,20 @@ const sidebarItem: menu[] = [
     title: 'Error 404',
     icon: BugIcon,
     to: '/pages/error'
+  },
+  {
+    title: 'New screen',
+    icon: BugIcon,
+    to: '/screen'
+  },
+  {
+    title: 'New screen One',
+    icon: BugIcon,
+    to: '/screen1'
+  },{
+    title: 'New screen Two',
+    icon: BugIcon,
+    to: '/screen2'
   },
   { divider: true },
   { header: 'Utilities' },
@@ -85,11 +99,6 @@ const sidebarItem: menu[] = [
         icon: CircleIcon,
         to: '/icons/tabler'
       },
-      {
-        title: 'Material Icons',
-        icon: CircleIcon,
-        to: '/icons/material'
-      }
     ]
   },
   { divider: true },

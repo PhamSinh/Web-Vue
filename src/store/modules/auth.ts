@@ -1,9 +1,7 @@
 import { defineStore } from 'pinia';
-import { useRouter } from "vue-router";
 // import { fetchWrapper } from '@utils/helpers/fetch-wrapper';
 
 // const baseUrl = `${import.meta.env.VITE_API_URL}/users`;
-const router = useRouter();
 export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
