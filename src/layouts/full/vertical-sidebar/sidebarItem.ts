@@ -109,4 +109,25 @@ const sidebarItem: menu[] = [
   },
 ];
 
+export const sidebarItemAdmin: menu[] = [
+  { header: 'Dashboard' },
+  {
+    title: 'Dashboard Admin',
+    icon: DashboardIcon,
+    to: '/admin/dashboard'
+  },
+  { divider: true },
+  { header: 'Pages' },
+  {
+    title: 'Admin Feature',
+    icon: BugIcon,
+    to: '/admin/feature'
+  },
+  {
+    title: 'Admin Config',
+    icon: BugIcon,
+    to: '/admin/config'
+  }
+];
+
 export default sidebarItem;

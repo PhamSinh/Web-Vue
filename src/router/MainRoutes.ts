@@ -41,9 +41,24 @@ const MainRoutes = {
       component: () => import('@components/NewScreen1.vue')
     },
     {
-      name: 'Screen2',
-      path: '/screen2',
-      component: () => import('@components/NewScreen2.vue')
+      name: 'Shadows',
+      path: '/utils/shadows',
+      component: () => import('@views/utilities/shadows/ShadowPage.vue')
+    },
+    {
+      name: 'Admin Dashboard',
+      path: '/admin/dashboard',
+      component: () => import('@components/AdminDashboard.vue')
+    },
+    {
+      name: 'Admin Feature',
+      path: '/admin/feature',
+      component: () => import('@components/AdminFeature.vue')
+    },
+    {
+      name: 'Admin Config',
+      path: '/admin/config',
+      component: () => import('@components/AdminConfig.vue')
     },
     {
       name: 'Colors',

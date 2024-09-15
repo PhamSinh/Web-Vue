@@ -272,28 +272,27 @@ watch(page, (newPage) => {
     background-color: #f44336; /* Màu nền đỏ */
     color: #fff; /* Màu chữ trắng */
     border: 2px solid #f44336; /* Đường viền màu đỏ */
-}
+  }
 
-.btn1:hover {
+  .btn1:hover {
     background-color: #e57373; /* Màu nền đỏ nhạt hơn khi hover */
     border-color: #e57373; /* Đường viền màu đỏ nhạt hơn khi hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
     transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
-}
+  }
 
-/* Nút Confirm */
-.btn2 {
+  /* Nút Confirm */
+  .btn2 {
     background-color: #2196f3; /* Màu nền xanh dương */
     color: #fff !important; /* Màu chữ trắng */
     border: 2px solid #2196f3; /* Đường viền màu xanh dương */
-}
+  }
 
-.btn2:hover {
+  .btn2:hover {
     background-color: #1976d2; /* Màu nền xanh dương nhạt hơn khi hover */
     border-color: #1976d2; /* Đường viền màu xanh dương nhạt hơn khi hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
     transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
-}
-
+  }
 }
 </style>

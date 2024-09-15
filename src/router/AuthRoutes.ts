@@ -19,6 +19,21 @@ const AuthRoutes = {
       name: 'Error 404',
       path: '/pages/error',
       component: () => import('@views/pages/maintenance/error/Error404Page.vue')
+    },
+    {
+      title: 'Dashboard Admin',
+      path: '/admin/dashboard',
+      component: () => import('@components/AdminDashboard.vue')
+    },
+    {
+      title: 'Feature',
+      path: '/admin/feature',
+      component: () => import('@components/AdminFeature.vue')
+    },
+    {
+      title: 'Config',
+      path: '/admin/config',
+      component: () => import('@components/AdminConfig.vue')
     }
   ]
 };

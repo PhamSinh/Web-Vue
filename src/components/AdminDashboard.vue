@@ -15,9 +15,7 @@
         </div>
 
         <!-- No data message -->
-        <div v-else-if="!items.length" class="no-data">
-          Empty
-        </div>
+        <div v-else-if="!items.length" class="no-data">Empty</div>
 
         <!-- Fixed header table -->
         <table v-else class="fixed-header-table">
@@ -37,7 +35,9 @@
               <td>{{ item.position }}</td>
               <td>{{ item.email }}</td>
               <td class="actions">
-                <v-btn @click="confirmDelete(item.id)" color="red">Delete</v-btn>
+                <v-btn @click="confirmDelete(item.id)" color="red"
+                  >Delete</v-btn
+                >
               </td>
             </tr>
           </tbody>
@@ -46,7 +46,9 @@
       <!-- Pagination and Record Count -->
       <v-card-actions>
         <div class="pagination-container">
-          <span>{{ `Showing ${paginatedItems.length} of ${totalItems} records` }}</span>
+          <span>{{
+            `Showing ${paginatedItems.length} of ${totalItems} records`
+          }}</span>
           <v-pagination
             v-model:page="page"
             :length="totalPages"
@@ -66,9 +68,9 @@
         <v-card-subtitle>
           Are you sure you want to delete this item?
         </v-card-subtitle>
-        <v-card-actions>
-          <v-btn @click="cancelDelete">Cancel</v-btn>
-          <v-btn color="red" @click="deleteItem">Delete</v-btn>
+        <v-card-actions class="btn-gr">
+          <v-btn class="btn1" @click="cancelDelete">Cancel</v-btn>
+          <v-btn class="btn2" color="red" @click="deleteItem">Delete</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -76,8 +78,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
-import { useStore } from 'vuex';
+import { ref, computed, watch, onMounted } from "vue";
+import { useStore } from "vuex";
 
 const store = useStore();
 const page = ref(1); // Initialize with the default page number
@@ -91,7 +93,9 @@ const items = computed(() => store.getters.items);
 const totalItems = computed(() => store.getters.totalItems); // Assuming you have totalItems in your store
 const totalPages = computed(() => Math.ceil(totalItems.value / limit));
 
-const paginatedItems = computed(() => items.value.slice((page.value - 1) * limit, page.value * limit));
+const paginatedItems = computed(() =>
+  items.value.slice((page.value - 1) * limit, page.value * limit)
+);
 
 // Function to handle confirming deletion
 const confirmDelete = (id: number) => {
@@ -109,10 +113,10 @@ const cancelDelete = () => {
 const deleteItem = async () => {
   if (itemToDelete.value !== null) {
     try {
-      await store.dispatch('deleteItem', itemToDelete.value);
+      await store.dispatch("deleteItem", itemToDelete.value);
       fetchItems(page.value); // Fetch the updated list after deletion
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error("Error deleting item:", error);
     } finally {
       showConfirmDialog.value = false; // Hide the confirmation dialog
       itemToDelete.value = null; // Clear the item ID
@@ -130,7 +134,7 @@ const handlePageChange = (newPage: number) => {
 const fetchItems = async (currentPage: number) => {
   loading.value = true; // Set loading state to true
   try {
-    await store.dispatch('fetchItems', { page: currentPage, limit });
+    await store.dispatch("fetchItems", { page: currentPage, limit });
   } finally {
     loading.value = false; // Set loading state to false after fetching data
   }
@@ -228,7 +232,43 @@ watch(page, (newPage: any) => {
 
 /* Example for table headers */
 .fixed-header-table thead th {
-  background-color: var(--background-color);
+  background-color: #e9f4f4;
   color: var(--text-color);
+}
+
+:deep(.v-overlay__content) {
+  background-color: #ffffff;
+}
+.btn-gr {
+  border-top: 1px solid #e9f4f4;
+  justify-content: center;
+  gap: 20px;
+  /* Đặt kiểu dáng cơ bản cho tất cả các nút */
+  .btn1 {
+    background-color: #f44336; /* Màu nền đỏ */
+    color: #fff; /* Màu chữ trắng */
+    border: 2px solid #f44336; /* Đường viền màu đỏ */
+  }
+
+  .btn1:hover {
+    background-color: #e57373; /* Màu nền đỏ nhạt hơn khi hover */
+    border-color: #e57373; /* Đường viền màu đỏ nhạt hơn khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
+    transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+  }
+
+  /* Nút Confirm */
+  .btn2 {
+    background-color: #2196f3; /* Màu nền xanh dương */
+    color: #fff !important; /* Màu chữ trắng */
+    border: 2px solid #2196f3; /* Đường viền màu xanh dương */
+  }
+
+  .btn2:hover {
+    background-color: #1976d2; /* Màu nền xanh dương nhạt hơn khi hover */
+    border-color: #1976d2; /* Đường viền màu xanh dương nhạt hơn khi hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng khi hover */
+    transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+  }
 }
 </style>
