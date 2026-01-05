@@ -1,0 +1,39 @@
+image: node:20-alpine
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+before_script:
+  - npm ci
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+  only:
+    - main     # chỉ chạy build trên nhánh main
+
+test:
+  stage: test
+  script:
+    - echo "No test script yet"
+  only:
+    - main     # chỉ chạy test trên main
+
+deploy:
+  stage: deploy
+  script:
+    - npm run preview
+  only:
+    - main
+  when: manual
